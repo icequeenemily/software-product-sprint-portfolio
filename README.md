@@ -1,6 +1,6 @@
 # Google Software Product Sprint
 
-This repo contains the projects you'll work on throughout SPS.
+This repo contains Emily Nesson's porfolio and SPS projects.
 
 To get started:
 
