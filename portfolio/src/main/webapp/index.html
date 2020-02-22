@@ -2,17 +2,78 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Emily's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
+        <style>
+            body {
+            background-image: url('/images/pink_background.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            }
+        </style>
+      <h1>Emily Nesson Portfolio</h1>
+      <p>Welcome to my portfolio!</p>
+      <p>Hi, my name is Emily and I'm a sophomore at NYU studying Computer Science and minoring in Math, History, and Web Programming and Applications. Aside from school, I really enjoy figure skating and listening to music.</p>
+      <img src="/images/beanie.jpg" height="425" width=auto 
+      style="border:20px solid hotpink">
+      <p>I came into college thinking I would be majoring in History, but after trying a CS course in my spring semester of freshman year, I changed my mind!
+        I really enjoy learning how things in tech (and other areas) connect, and I also enjoy problem solving.
+        I have been a competitive figure skater for 15 years, and I've been playing piano for 10 years.
+      </p>
+      <p>Click here to get a random quote from some of my favorite characters:</p>
+      <button onclick="addRandomGreeting()">Quotes</button>
       <div id="greeting-container"></div>
+      <br>
+      <p>Some projects that I've worked on: </p> 
+      <ul>
+        <li>Quad Linked List Program</li>
+        <li>Sample Web Application with BI software embedded</li>
+        <li>Bit Manipulation Programs in C</li>
+    </ul>
+<p>I really enjoy spending time with my friends and trying new things! Being that I go to school in NYC, there are so many restuarants and cool places to explore. There are also lots of stores to look around in:)</p>
+    <p>Here's some pictures of my best friends: </p>
+<div class="gallery">
+  <a target="_blank">
+    <img src="images/niah.jpg" alt="Niah" width="600" height="400">
+  </a>
+  <div class="desc">My friend Niah and me!</div>
+</div>
+<div class="gallery">
+  <a target="_blank">
+    <img src="images/carly.jpeg" alt="Carly" width="600" height="400">
+  </a>
+  <div class="desc">My friend Carly and me!</div>
+</div>
+<div class="gallery">
+  <a target="_blank">
+    <img src="images/izzy.jpeg" alt="Izzy" width="600" height="400">
+  </a>
+  <div class="desc">My friend Izzy and me!</div>
+</div>
+
+      <!--here-->
     </div>
+    <br>
+
+    <footer>
+        <div id="socialMedia"> 
+            <br>
+            <a href="http://www.github.com/icequeenemily" target="_blank">
+				<img src="images/github.png" height="100" width="100"/></a>
+			<a href="http://www.linkedin.com/in/emily-nesson-emn" target="_blank">
+				<img src="images/linkedin.png" height="100" width="100"/></a>
+            <a href="https://open.spotify.com/playlist/6J1yjhI6dctYUChFoMnDWf?si=KL4EWP-GReO18XKTf7XYbQ" target="_blank">
+				<img src="images/squarespotify.png" height="100" width="100"/> </a>
+                <a href="http://www.instagram.com/emilynesson" target="_blank">
+					<img src="images/instagram.jpeg" height="100" width="100"/></a>
+			</div>
+            
+		</footer>
+	</div>
   </body>
 </html>
