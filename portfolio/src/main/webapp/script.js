@@ -27,6 +27,41 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
+/**
+ * Fetches a random quote from the server and adds it to the DOM.
+ */
+function getRandomQuote() {
+  console.log('Fetching a saying.');
+
+  // The fetch() function returns a Promise because the request is asynchronous.
+  const responsePromise = fetch('/data');
+
+  // When the request is complete, pass the response into handleResponse().
+  responsePromise.then(handleResponse);
+}
+
+/**
+ * Handles response by converting it to text and passing the result to
+ * addQuoteToDom().
+ */
+function handleResponse(response) {
+  console.log('Handling the response.');
+
+  // response.text() returns a Promise, because the response is a stream of
+  // content and not a simple variable.
+  const textPromise = response.text();
+
+  // When the response is converted to text, pass the result into the
+  // addQuoteToDom() function.
+  textPromise.then(addQuoteToDom);
+}
+
+/** Adds a random quote to the DOM. */
+function addQuoteToDom(quote) {
+  console.log('Adding quote to dom: ' + "The Early Bird Gets the Worm!");
+
+}
+
 function getRandomQuoteUsingArrowFunctions() {
   fetch('/data').then(response => response.text()).then((request) => {
     document.getElementById('saying-container').innerText = "The early bird gets the worm!";
