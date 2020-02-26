@@ -26,3 +26,15 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+function getRandomQuoteUsingArrowFunctions() {
+  fetch('/data').then(response => response.text()).then((request) => {
+    document.getElementById('saying-container').innerText = "The early bird gets the worm!";
+  });
+}
+
+async function getRandomQuoteUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const quote = await response.text();
+  document.getElementById('saying-container').innerText = "The early bird gets the worm!";
+}
