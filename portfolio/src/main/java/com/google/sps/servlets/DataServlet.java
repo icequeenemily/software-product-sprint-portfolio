@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -27,13 +30,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    private List<String> quotes;
+private List<String> quotes;
 
    public void init() {
     quotes = new ArrayList<>();
-    quotes.add("Here is one message!");
-    quotes.add("Here is a second message!");
-    quotes.add("Here is a third message!");
   }
 
   @Override
@@ -44,21 +44,19 @@ public class DataServlet extends HttpServlet {
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
-    //response.getWriter().println("<h1>Hello Emily!</h1>");
   }
 
     /**
    * Converts a ServerStats instance into a JSON string using manual String concatentation.
    */
-   //have to use a for loop, convert ArrayList to json adding keys
-  private String convertToJson(List<String> listt) {
+  private String convertToJson(List<String> comments) {
+    //Convert ArrayList to a Json string with numerical keys
     String json = "{";
-    for (int i=0; i<listt.size(); i++) {
-        //message 1
+    for (int i=0; i<comments.size(); i++) {
         json +=  "\"" + String.valueOf(i+1) +  "\"";
         json += ": ";
-        json +=  "\"" + listt.get(i) + "\"";
-        if (i != (listt.size()-1)) {
+        json +=  "\"" + comments.get(i) + "\"";
+        if (i != (comments.size()-1)) {
         json += ",";
         }
     }
@@ -71,20 +69,25 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String text = getParameter(request, "text-input", "");
 
-    // Break the text into individual words.
     String[] words = text.split("\\s*,\\s*");
-
-    // Sort the words.
-    //if (sort) {
-      //Arrays.sort(words);
-    //}
-
     // Respond with the result.
     response.setContentType("text/html;");
     response.getWriter().println(Arrays.toString(words));
 
+    //Datastore
+    String title = request.getParameter("title");
+    long timestamp = System.currentTimeMillis();
+
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("title", title);
+    taskEntity.setProperty("timestamp", timestamp);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
+
     //Redirect
-    //response.sendRedirect("/index.html");
+    response.sendRedirect("/index.html");
+
   }
 
   /**
@@ -98,4 +101,5 @@ public class DataServlet extends HttpServlet {
     }
     return value;
   }
+  //Datastore
 }
