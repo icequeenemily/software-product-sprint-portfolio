@@ -17,6 +17,11 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.gson.Gson;
+import com.google.sps.data.Task;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -39,13 +44,28 @@ private List<String> quotes;
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    String json = convertToJson(quotes);
+  //String json = convertToJson(quotes);
 
+    //Loading Entities
+    Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    
+    PreparedQuery results = datastore.prepare(query);
+    List<Task> tasks = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String title = (String) entity.getProperty("title");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      Task task = new Task(id, title, timestamp);
+      tasks.add(task);
+    }
+    Gson gson = new Gson();
     // Send the JSON as the response
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(gson.toJson(tasks)); //said json
   }
-
     /**
    * Converts a ServerStats instance into a JSON string using manual String concatentation.
    */
@@ -101,5 +121,4 @@ private List<String> quotes;
     }
     return value;
   }
-  //Datastore
 }
