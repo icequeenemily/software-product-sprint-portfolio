@@ -57,9 +57,11 @@ function handleResponse(response) {
 }
 
 /** Adds a random quote to the DOM. */
-function addQuoteToDom(quote) {
+function addQuoteToDom(saying) {
+    saying= "The Early Bird gets the Worm";
   console.log('Adding quote to dom: ' + "The Early Bird Gets the Worm!");
-
+  const quoteContainer = document.getElementById('saying-container');
+  quoteContainer.innerText = saying;
 }
 
 function getRandomQuoteUsingArrowFunctions() {
