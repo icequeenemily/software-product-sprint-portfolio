@@ -15,6 +15,9 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +27,42 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+    private List<String> quotes;
+
+   public void init() {
+    quotes = new ArrayList<>();
+    quotes.add("Here is one message!");
+    quotes.add("Here is a second message!");
+    quotes.add("Here is a third message!");
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Emily!</h1>");
+
+    String json = convertToJson(quotes);
+
+    // Send the JSON as the response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+    //response.getWriter().println("<h1>Hello Emily!</h1>");
+  }
+
+    /**
+   * Converts a ServerStats instance into a JSON string using manual String concatentation.
+   */
+   //have to use a for loop, convert ArrayList to json adding keys
+  private String convertToJson(List<String> listt) {
+    String json = "{";
+    for (int i=0; i<listt.size(); i++) {
+        //message 1
+        json +=  "\"" + String.valueOf(i+1) +  "\"";
+        json += ": ";
+        json +=  "\"" + listt.get(i) + "\"";
+        if (i != (listt.size()-1)) {
+        json += ",";
+        }
+    }
+    json += "}" ;
+    return json;
   }
 }
