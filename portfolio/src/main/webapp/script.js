@@ -70,7 +70,7 @@ function getRandomQuoteUsingArrowFunctions() {
   });
 }
 //For JSON
-function getServerStats() {
+function getComments() {
   fetch('/data').then(response => response.json()).then((quotes) => {
     // stats is an object, not a string, so we have to
     // reference its fields to create HTML content
@@ -78,7 +78,7 @@ function getServerStats() {
     const statsListElement = document.getElementById('data-container');
     statsListElement.innerHTML = '';
     var i;
-    for (i=0; i<quotes.length; i++) {
+    for (i= 0; i< quotes.length; i++) {
         statsListElement.appendChild(createListElement(quotes[i].title));
     }
   });
