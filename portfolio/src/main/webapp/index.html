@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getServerStats()">
     <div id="content">
         <style>
             body {
@@ -20,19 +20,15 @@
       <p>Welcome to my portfolio!</p>
       <button onclick="getRandomQuote()">See my Favorite Saying!</button>
       <div id="saying-container"></div>
-        <h1>Data Servlet</h1>
-        <p>Click here to see messages:</p>
-        <button onclick="getServerStats()">Fetch server stats!</button>
-        <ul id="data-container"></ul>
+      <h1>Comments</h1>
+      <form action="/data" method="POST">
+        <p>Enter a comma-separated list of words:</p>
+        <textarea name="text-input">one, two, three</textarea>
+        <br/><br/>
+        <input type="submit" />
+      </form>
+    <div id="data-container"></div>
       </div>
-
-     <h1>Text Processor</h1>
-    <form action="/data" method="POST">
-      <p>Enter a comma-separated list of words:</p>
-      <textarea name="text-input">one, two, three</textarea>
-      <br/><br/>
-      <input type="submit" />
-    </form>
       <p>Hi, my name is Emily and I'm a sophomore at NYU studying Computer Science and minoring in Math, History, and Web Programming and Applications. Aside from school, I really enjoy figure skating and listening to music.</p>
       <img src="/images/beanie.jpg" height="425" width=auto 
       style="border:20px solid hotpink">

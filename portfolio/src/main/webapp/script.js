@@ -69,12 +69,6 @@ function getRandomQuoteUsingArrowFunctions() {
     document.getElementById('saying-container').innerText = "The early bird gets the worm!";
   });
 }
-
-async function getRandomQuoteUsingAsyncAwait() {
-  const response = await fetch('/data');
-  const quote = await response.text();
-  document.getElementById('saying-container').innerText = "The early bird gets the worm!";
-}
 //For JSON
 function getServerStats() {
   fetch('/data').then(response => response.json()).then((quotes) => {
@@ -83,12 +77,10 @@ function getServerStats() {
 
     const statsListElement = document.getElementById('data-container');
     statsListElement.innerHTML = '';
-    statsListElement.appendChild(
-        createListElement('Message 1: ' + quotes[1]));
-    statsListElement.appendChild(
-        createListElement('Message 2: ' + quotes[2]));
-    statsListElement.appendChild(
-        createListElement('Message 3: ' + quotes[3]));
+    var i;
+    for (i=0; i<quotes.length; i++) {
+        statsListElement.appendChild(createListElement(quotes[i].title));
+    }
   });
 }
 

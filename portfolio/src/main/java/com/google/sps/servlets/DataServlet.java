@@ -99,7 +99,7 @@ private List<String> quotes;
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
-    taskEntity.setProperty("title", title);
+    taskEntity.setProperty("title", text);
     taskEntity.setProperty("timestamp", timestamp);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
