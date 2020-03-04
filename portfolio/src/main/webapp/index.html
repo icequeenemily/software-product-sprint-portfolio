@@ -7,6 +7,7 @@
     <script src="script.js"></script>
   </head>
   <body onload="getComments()">
+  <body onload="fetchBlobstoreUrlAndShowForm()">
     <div id="content">
         <style>
             body {
@@ -22,9 +23,12 @@
       <br/><br/>
       <div id="saying-container"></div>
       <h1>Comments</h1>
-      <form action="/data" method="POST">
+      <form id="my-form" action="/data" method="POST">
         <p>Enter a comma-separated list of words:</p>
         <textarea name="text-input">comment here</textarea>
+        <br/>
+        <p>Upload an image:</p>
+        <input type="file" name="image">
         <br/><br/>
         <input type="submit" />
       </form>

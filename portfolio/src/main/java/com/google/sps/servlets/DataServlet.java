@@ -44,8 +44,6 @@ private List<String> quotes;
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-  //String json = convertToJson(quotes);
-
     //Loading Entities
     Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
 
