@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>Emily's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body onload="getComments()">
-  <body onload="fetchBlobstoreUrlAndShowForm()">
+  <body onload="fetchBlobstoreUrlAndShowForm(); getComments()">
+  <!--body onload="getComments()"-->
     <div id="content">
         <style>
             body {
@@ -23,7 +23,15 @@
       <br/><br/>
       <div id="saying-container"></div>
       <h1>Comments</h1>
-      <form id="my-form" action="/data" method="POST">
+      <form id="my-form" class="hidden" method="POST" enctype="multipart/form-data">
+      <p>Type some text:</p>
+      <textarea name="message"></textarea>
+      <br/>
+      <p>Upload an image:</p>
+      <input type="file" name="image">
+      <br/><br/>
+      <button>Submit</button>
+      <!--<form id="my-form" action="/data" method="POST">
         <p>Enter a comma-separated list of words:</p>
         <textarea name="text-input">comment here</textarea>
         <br/>
@@ -31,7 +39,7 @@
         <input type="file" name="image">
         <br/><br/>
         <input type="submit" />
-      </form>
+      </form> -->
       <div id="data-container"></div>
       <p>Hi, my name is Emily and I'm a sophomore at NYU studying Computer Science and minoring in Math, History, and Web Programming and Applications. Aside from school, I really enjoy figure skating and listening to music.</p>
       <img src="/images/beanie.jpg" height="425" width=auto 
