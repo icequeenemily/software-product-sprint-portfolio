@@ -46,7 +46,8 @@ public class FormHandlerServlet extends HttpServlet {
     String message = request.getParameter("message");
 
     // Get the URL of the image that the user uploaded to Blobstore.
-    String imageUrl = getUploadedFileUrl(request, "image");
+    String imageUrl = getUploadedFileUrl(request, "image"); 
+    imageUrl= imageUrl.replace("http://localhost:8080", "");
 
     // Output some HTML that shows the data the user entered.
     // A real codebase would probably store these in Datastore.
