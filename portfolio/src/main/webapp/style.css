@@ -71,6 +71,16 @@ div.desc {
     font-weight: normal;
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
 }
+input {
+    background-color: hotpink;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
 button {
     background-color: hotpink;
     border: none;

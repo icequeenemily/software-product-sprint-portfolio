@@ -14,6 +14,8 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -32,6 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
+//@WebServlet("/data")
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
@@ -43,9 +46,6 @@ private List<String> quotes;
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-  //String json = convertToJson(quotes);
-
     //Loading Entities
     Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
 

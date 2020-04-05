@@ -74,7 +74,6 @@ function getComments() {
   fetch('/data').then(response => response.json()).then((quotes) => {
     // stats is an object, not a string, so we have to
     // reference its fields to create HTML content
-
     const statsListElement = document.getElementById('data-container');
     statsListElement.innerHTML = '';
     var i;
@@ -90,5 +89,19 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+//for Blobstore
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/blobstore-upload-url')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('my-form');
+        messageForm.action = imageUploadUrl;
+        messageForm.classList.remove('hidden');
+      });
+}
+
+
 
 
